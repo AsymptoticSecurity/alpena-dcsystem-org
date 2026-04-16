@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Lógica y Matemática discreta</title>
+	<link rel="stylesheet" href="estilos/estilos.css">
+  <script  async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+</head>
+<body>
+	<header class="header">
+		<h1>Lógica y Matemática discreta</h1>
+
+		<nav class="menu">
+			<ul>
+				<li><a href="index.html">Página principal</a></li>
+				<li><a href="funcion-lineal.html">Funcion Lineal</a></li>
+				<li><a href="funcion-cuadratica.html">Funcion Cuadrática</a></li>
+				<li><a href="cifrado.html">Criptografia</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main class="main">
+		<article>
+		<h2>Funcion Cuadrática</h2>
+		<p>La función cuadrática es otra de las funciones "clásicas".</p>
+		<p>En este caso, es una función polinómica de grado 2, de forma:</p>
+		<p>\(ax^2 + bx + c=0\)</p>
+		<p>Voy a dar por sentado por el momento que el lector posee conocimientos de teoría de conjuntos como así tambien de la inyectividad, biyectividad o sobreyectividad de las funciones que analizaremos</p>
+		<p>Para comenzar, podemos definirla de la siguiente manera:</p>
+
+    		<span>\(f:\Re\Rightarrow\Re/f(x)=ax^2 + bx + c\)</span>
+		<p>Dividamos las aguas: Por un lado tenemos el coeficiente principal \(ax^2\), el coeficiente lineal \(bx\) y el término independiente que es siempre una constante "c". Para que exista función cuadrática debemos tener siempre el término cuadrático.</p>
+
+		<p>Analicemos la siguiente función:</p>
+		<p>\(f:\Re\Rightarrow\Re/f(x)=x^2\)</p>
+		<p>El primer paso de la resolución de esta función es hallar la abscisa del vértice, es decir, \(x_v\), para lo cual utilizaremos:</p>
+		<p>\(x_v=-\frac{b}{2a}\)</p>
+		<p>Posteriormente debemos obtener la ordenada del vertice, para lo cual reemplazamos el valor que nos dió \(x_v\) en nuestra función.</p>
+		<p>En nuestro ejemplo tenemos:</p>
+		<p>\(x_v=-\frac{b}{2a}\)</p>
+		<p>\(x_v=-\frac{0}{2.1}=0\)</p>
+		<p>Por lo tanto nuestro \(y_v\) será también 0, puesto que \(f(x_v)=(x_v)^2\) es decir, \(0^2=0\)</p>
+		<p>El último punto por el momento es hallar nuestro eje de simetría, que se obtine de la misma forma que \(x_v\), es decir que en nuestro ejemplo también es 0.</p>
+		<p>Por último, nos queda obtener los ceros o raices de la función, para lo cual utilizaremos la fórmula resolvente:</p>
+		<p>\(x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\)</p>
+		<p>En nuestro ejemplo, no existen raices \(\Re\)</p>
+		<p>Finalmente, nuestra gráfica sería algo así:</p>
+		<img src="imagenes/cuadratica.png" alt="Parábola en un sisteama de ejes cartesianos">
+		</article>
+	</main>
+
+	<footer>
+		<p>Onixred - 2017</p>
+	</footer>
+</body>
+</html>

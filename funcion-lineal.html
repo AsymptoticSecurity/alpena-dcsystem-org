@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Lógica y Matemática discreta</title>
+	<link rel="stylesheet" href="estilos/estilos.css">
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+</head>
+<body>
+	<header class="header">
+		<h1>Lógica y Matemática discreta</h1>
+
+		<nav class="menu">
+			<ul>
+				<li><a href="index.html">Página principal</a></li>
+				<li><a href="funcion-lineal.html">Funcion Lineal</a></li>
+				<li><a href="funcion-cuadratica.html">Funcion Cuadrática</a></li>
+				<li><a href="cifrado.html">Criptografia</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main class="main">
+		<article>
+		<h2>Funcion lineal</h2>
+		<p>La función lineal es una de las funciones que más aplicaciones prácticas tiene en la vida diaria. Representa realciones directamente proporcionales o inversamente proporcionales (llamada pendiente $mx\)). Observemos que si <b>X</b> es 0, entonces b nos indica la intersección de la recta con el eje <b>Y</b>. A este punto se lo conoce como <b>ordenada al orígen.</b></p>
+		<p>Cabe aclarar que esta función tambien puede conocerse como polinómica de grado 1, es decir:</p>
+		<p>\(bx^1\Rightarrow bx\)</p>
+		<p>Voy a dar por sentado por el momento que el lector posee conocimientos de teoría de conjuntos como así tambien de la inyectividad, biyectividad o sobreyectividad de las funciones que analizaremos</p>
+		<p>Para comenzar, podemos definirla de la siguiente manera:</p>
+
+    		\(f:\Re\Rightarrow\Re/f(x)=mx + b\)
+		<p><b>$m$</b> mide la pendiente de la recta, osea la tangente del ángulo $\alpha$ que se forma con el semieje de las abscisas.</p>
+
+		<img src="imagenes/tangente.jpg" alt="Tangente" title="Tangente respecto al semieje">
+
+		<p>Recordemos la definición de tangenete: opuesto sobre adyacente
+		\(\tan(\alpha) = \frac{a}{b}\)
+		</p>
+
+		<p>Posteriormente nos ocuparemos de las diversas aplicacioenes interesantes que tiene el uso de la trigonometría en las funcines lineales, muy útil, obviamente para el cálculo de áreas.</p>
+
+		<p>A continuación, tenemos el siguiente ejemplo:</p>
+
+		<span>\(f:\Re\Rightarrow\Re/f(x)=3x + 2\)</span>
+
+		<p>Como vemos, la ordenada al orígen es \(b=2\) y la pendiente es \(m=3\) . La forma de graficar esta funcion puede ser:</p>
+			<ul>
+				<li>Por tabla de valores</li>
+				<li>Analíticamente, es decir, calculando la raíz (donde corta al eje de las abscisas)</li>
+				<li>Por definición trigonométrica</li>
+			</ul>
+
+		<p>En nuestro caso utilizaremos el último y se procede de la siguiente forma: Se sabe que una recta se puede trazar con tan solo dos puntos en el plano, por lo tanto, nuestra función no escapa a la regla. Nuestro primer punto será (0;2), es decir, nuestra ordenada al orígen.</p>
+		<p>Posteriormente, para el segundo punto, tenemos la pendiente, y para ello nos posicionamos sobre la ordena al orígen y tomamos una unidad a la derecha y subimos 3 unidades, es decir, tenemos \(\frac{3}{1}\)
+		</p>
+		<img src="imagenes/fl1.png" alt="Grafico Funcion">
+		<p>Como podemos ver, tenemos ahora dos puntos el \((0;2)\) y el \((1;5)\). Con los dos puntos, trazamos la recta en el sistema</p>
+		
+		<h2>Rectas perpendiculares y paralelas</h2>
+		<h3>Rectas perpendiculares</h3>
+		<p>Para que existan dos rectas perpendiculares (simbolidazad \(\perp\)), se debe cumplir que: \(m2.m1=-1\)</p>
+		
+		<p>Es decir: \(m2 = -\frac{1}{m1}\)</p>
+		
+		<p>Dicho de otro modo, debe ser la inversa y además con el signo contrario de la pendiente orginal, veamos un ejemplo:</p>
+		<p>Sea: \(f(x)=3x+2\)</p>
+		 
+		<p>Su perpendicular será: \(m1=\frac{-1}{3}\)</p>>
+			
+		<p>Por lo tanto, la recta perpendicular a \(f(x)=3x+2\) será \(g(x)=-\frac{1}{3}x+2\)</p>
+		<img src="imagenes/perpendicular.png" alt="Rectas perpendiculares en un sistema de ejes cartesianos">
+		<p>Cabe aclarar,que pueden tener, o no la misma <b>ordenada al orígen</b></p>
+		<h3>Rectas paralelas</h3>
+		<p>Para el análisis de las rectas paralelas ($\\$)se debe cumplir simplemente la condición de que ambas tengan la misma pendiente y distinta ordenada al orígen. Por ejemplo:</p>
+		<p>Sea: \(f(x)=2x+1\) y \(g(x)=2x+3\)</p>
+		<p>Como \(m1=m2\) estamos en presencia de dos rectas paralelas. Veamos su gráfica:</p>
+		<img src="imagenes/paralelas.png" alt="Rectas paralelas en un sistema de ejes cartesianos">
+		</article>
+	</main>
+
+	<footer>
+		<p>Onixred - 2017</p>
+	</footer>
+</body>
+</html>
