@@ -32,4 +32,7 @@ jobs:
           echo "$PASSPHRASE" | DISPLAY=:0 ssh-add ~/.ssh/id_rsa
           
           # Copiamos. Nota: -o StrictHostKeyChecking=no es un respaldo extra
-          scp -r ./dist/* "$USER@$HOST:/sdf/udd/a/alpena/html"
+          #scp -r ./dist/* "$USER@$HOST:/sdf/udd/a/alpena/html"
+          ls
+          exit
+          
