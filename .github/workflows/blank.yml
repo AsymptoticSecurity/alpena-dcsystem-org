@@ -1,0 +1,24 @@
+name: Deploy via SCP
+
+on:
+  push:
+    branches:
+      - main  # Se ejecuta al subir cambios a la rama main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Copiar archivos vía SCP
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER }}
+          username: ${{ secrets.REMOTE_USER }}
+          key: ${{ secrets.SSH }}
+          port: 22
+          source: "dist/*,config.json" # Archivos o carpetas a copiar
+          target: "/sdf/udd/a/apena/html/"    # Carpeta destino en el servidor
+          strip_components: 1          # Opcional: elimina niveles de carpetas del origen
