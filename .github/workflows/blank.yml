@@ -6,19 +6,30 @@ on:
       - main  # Se ejecuta al subir cambios a la rama main
 
 jobs:
-  build-and-deploy:
+  network-test:
     runs-on: ubuntu-latest
+    env:
+          # Usamos variables de entorno para que el shell no se confunda
+          PRIVATE_KEY: ${{ secrets.SSH }}
+          PASSPHRASE: ${{ secrets.PW_SECRET }}
+          HOST: ${{ secrets.SERVER }}
+          USER: ${{ secrets.USER }}
     steps:
-      - name: Checkout del código
-        uses: actions/checkout@v4
-
-      - name: Copiar archivos vía SCP
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.SERVER }}
-          username: ${{ secrets.USER }}
-          key: ${{ secrets.SSH }}
-          passphrase: ${{ secrets.PW_SECRET }}
-          port: 22
-          target: "/sdf/udd/a/apena/html"    # Carpeta destino en el servidor
-          debug: true
+        
+      - name: Probar conectividad al puerto 22
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          
+         
+          echo "$PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          
+          ssh-keyscan -H "$HOST" >> ~/.ssh/known_hosts
+          
+          # Usamos ssh-agent para manejar la contraseña de la llave
+          eval $(ssh-agent -s)
+          echo "$PASSPHRASE" | DISPLAY=:0 ssh-add ~/.ssh/id_rsa
+          
+          # Copiamos. Nota: -o StrictHostKeyChecking=no es un respaldo extra
+          scp -r ./dist/* "$USER@$HOST:/sdf/udd/a/alpena/html"
