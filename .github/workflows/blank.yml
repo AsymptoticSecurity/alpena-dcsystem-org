@@ -16,7 +16,7 @@ jobs:
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.SERVER }}
-          username: ${{ secrets.REMOTE_USER }}
+          username: ${{ secrets.USER }}
           key: ${{ secrets.SSH }}
           passphrase: ${{ secrets.PW_SECRET }}
           port: 22
