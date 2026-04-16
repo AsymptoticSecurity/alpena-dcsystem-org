@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout del código
-        uses: actions/checkout@v4
+        uses: actions/checkout@v1
 
       - name: Copiar archivos vía SCP
         uses: appleboy/scp-action@v0.1.7
@@ -20,6 +20,4 @@ jobs:
           key: ${{ secrets.SSH }}
           passphrase: ${{ secrets.PW_SECRET }}
           port: 22
-          source: "dist/*,config.json" # Archivos o carpetas a copiar
-          target: "/sdf/udd/a/apena/html/"    # Carpeta destino en el servidor
-          strip_components: 1          # Opcional: elimina niveles de carpetas del origen
+          target: "/sdf/udd/a/apena/html"    # Carpeta destino en el servidor
