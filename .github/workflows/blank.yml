@@ -1,38 +1,52 @@
-name: Deploy via SCP
+name: Deploy Main to Server
 
 on:
   push:
     branches:
-      - main  # Se ejecuta al subir cambios a la rama main
+      - main  # Se dispara cada vez que haces push a main
 
 jobs:
-  network-test:
+  deploy:
     runs-on: ubuntu-latest
-    env:
-          # Usamos variables de entorno para que el shell no se confunda
+    steps:
+      # 1. Traer el código del commit más reciente
+      - name: Checkout de la rama main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Trae todo el historial (opcional)
+
+      # 2. (Opcional) Si tu proyecto necesita compilarse (ej. npm install && npm run build)
+      # - name: Build project
+      #   run: |
+      #     npm install
+      #     npm run build
+
+      # 3. Preparar SSH y copiar archivos
+      - name: Copiar archivos vía SCP
+        env:
           PRIVATE_KEY: ${{ secrets.SSH }}
           PASSPHRASE: ${{ secrets.PW_SECRET }}
           HOST: ${{ secrets.SERVER }}
           USER: ${{ secrets.USER }}
-    steps:
-        
-      - name: Probar conectividad al puerto 22
         run: |
+          # Configurar el directorio SSH
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
           
-         
-          echo "$PRIVATE_KEY" > ~/.ssh/id_rsa
+          # Guardar la llave (el uso de comillas simples en 'EOF' evita problemas de escape)
+          cat <<'EOF' > ~/.ssh/id_rsa
+          ${{ secrets.SSH_KEY }}
+          EOF
           chmod 600 ~/.ssh/id_rsa
           
+          # Registrar el host para evitar el prompt de confirmación
           ssh-keyscan -H "$HOST" >> ~/.ssh/known_hosts
           
-          # Usamos ssh-agent para manejar la contraseña de la llave
+          # Desbloquear la llave con la frase de contraseña
           eval $(ssh-agent -s)
           echo "$PASSPHRASE" | DISPLAY=:0 ssh-add ~/.ssh/id_rsa
           
-          # Copiamos. Nota: -o StrictHostKeyChecking=no es un respaldo extra
-          #scp -r ./dist/* "$USER@$HOST:/sdf/udd/a/alpena/html"
-          ls
-          exit
-          
+          # Copiar el contenido. 
+          # Nota: Asegúrate de que la carpeta ./dist/ exista tras el build.
+          # Si quieres copiar todo el repo, usa . en lugar de ./dist/*
+          scp -r ./dist/* "$USER@$HOST:/sdf/udd/a/alpena/html"
